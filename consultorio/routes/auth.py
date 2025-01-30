@@ -3,7 +3,8 @@ from flask_login import login_user, logout_user, login_required, current_user
 from werkzeug.security import check_password_hash, generate_password_hash
 from models.usuario import Usuario, db
 from models.paciente import Paciente
-from models.doctor import db, Doctor
+from models.doctor import Doctor
+from flask_login import LoginManager
 
 # Crear el blueprint de autenticación
 auth_bp = Blueprint('auth', __name__)
@@ -29,7 +30,7 @@ def login():
         # Buscar al usuario en la base de datos
         user = Usuario.query.filter_by(usuario=usuario).first()
 
-        if user and user.verificar_contraseña(contraseña):  # Verificación de la contraseña
+        if user and check_password_hash(user.contraseña, contraseña):  # Verificación de la contraseña con check_password_hash
             # Login con Flask-Login
             login_user(user)
 
@@ -142,4 +143,3 @@ def patient_dashboard():
 def admin_dashboard():
     doctors = Doctor.query.all()  # Obtiene todos los doctores de la base de datos
     return render_template('admin-dashboard.html', doctors=doctors)
-
