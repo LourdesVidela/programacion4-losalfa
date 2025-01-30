@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -22,7 +22,8 @@
             <li><a href="#">Dirección: San Martín 111, Ciudad de Salta</a></li>
           </ul>
         </li>
-        <li><a class="logout-button" href="{{ url_for('logout') }}">Cerrar sesión</a></li>
+        <!-- Cambié la URL de logout para referirse correctamente al blueprint 'auth' -->
+        <li><a class="logout-button" href="{{ url_for('auth.logout') }}">Cerrar sesión</a></li>
       </ul>
     </nav>
   </header>
@@ -88,9 +89,10 @@
       </div>
     </section>
 
+  </div>
+
   <footer> </footer>
 
   <script src="{{ url_for('static', filename='js/patient_dashboard.js') }}"></script>
 </body>
 </html>
-
