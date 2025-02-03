@@ -1,0 +1,74 @@
+<!-- app/templates/crear_doctor.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Doctor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('home.home') }}">Home</a></li>
+                <li><a href="{{ url_for('auth.logout') }}">Cerrar sesión</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1>Crear Nuevo Doctor</h1>
+        <form method="POST">
+            <!-- Nombre -->
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required>
+
+            <!-- Nombre de usuario -->
+            <label for="username">Usuario:</label>
+            <input type="text" id="username" name="username" required>
+
+            <!-- Contraseña -->
+            <label for="password">Contraseña:</label>
+            <input type="password" id="password" name="password" required>
+
+            <!-- Especialidad -->
+            <label for="especialidad">Especialidad:</label>
+            <input type="text" id="especialidad" name="especialidad" required>
+
+            <!-- Teléfono -->
+            <label for="telefono">Teléfono:</label>
+            <input type="text" id="telefono" name="telefono" required>
+
+            <!-- Obras Sociales (Checkboxes) -->
+            <label>Obras Sociales:</label>
+            <div>
+                <input type="checkbox" id="osde" name="obras_sociales" value="OSDE">
+                <label for="osde">OSDE</label>
+
+                <input type="checkbox" id="swiss" name="obras_sociales" value="Swiss Medical">
+                <label for="swiss">Swiss Medical</label>
+
+                <input type="checkbox" id="galeno" name="obras_sociales" value="Galeno">
+                <label for="galeno">Galeno</label>
+
+                <input type="checkbox" id="medife" name="obras_sociales" value="Medifé">
+                <label for="medife">Medifé</label>
+
+                <input type="checkbox" id="ioma" name="obras_sociales" value="IOMA">
+                <label for="ioma">IOMA</label>
+            </div>
+
+            <!-- Dirección -->
+            <label for="direccion">Dirección:</label>
+            <input type="text" id="direccion" name="direccion" required>
+
+            <!-- Botón de enviar -->
+            <button type="submit" class="btn btn-success">Crear Doctor</button>
+        </form>
+
+        <!-- Enlace para volver al panel de administración -->
+        <a href="{{ url_for('admin.panel_admin') }}" class="btn btn-secondary">Volver al Panel de Administración</a>
+    </div>
+</body>
+</html>
