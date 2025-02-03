@@ -1,0 +1,42 @@
+<!-- doctores.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Doctores</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+</head>
+<body>
+    <h1>Lista de Doctores</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Especialidad</th>
+                <th>Teléfono</th>
+                <th>Dirección</th>
+                <th>Obra Social</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for doctor in doctores %}
+            <tr>
+                <td>{{ doctor.nombre }}</td>
+                <td>{{ doctor.especialidad }}</td>
+                <td>{{ doctor.telefono }}</td>
+                <td>{{ doctor.direccion }}</td>
+                <td>{{ doctor.obra_social }}</td>
+                <td>
+                    <!-- Botón de editar -->
+                    <a href="{{ url_for('admin.editar_doctor', doctor_id=doctor.id) }}">Editar</a>
+                    <!-- Botón de eliminar -->
+                    <a href="{{ url_for('admin.eliminar_doctor', doctor_id=doctor.id) }}" onclick="return confirm('¿Estás seguro de que deseas eliminar a este doctor?')">Eliminar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

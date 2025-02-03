@@ -1,0 +1,60 @@
+
+<!-- app/templates/panel_admin.html -->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administración</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Bienvenido al Panel de Administración</h1>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('admin.doctores') }}">Lista de Doctores</a></li>
+                <li><a href="{{ url_for('auth.logout') }}">Cerrar sesión</a></li>
+                <li><a href="{{ url_for('admin.crear_doctor') }}">Crear Nuevo Doctor</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section>
+        <h2>Lista de Doctores</h2>
+        <a href="{{ url_for('admin.crear_doctor') }}">Crear Nuevo Doctor</a>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Especialidad</th>
+                    <th>Teléfono</th>
+                    <th>Dirección</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for doctor in doctores %}
+                <tr>
+                    <td>{{ doctor.nombre }}</td>
+                    <td>{{ doctor.especialidad }}</td>
+                    <td>{{ doctor.telefono }}</td>
+                    <td>{{ doctor.direccion }}</td>
+                    <td>
+                        <a href="{{ url_for('admin.editar_doctor', id=doctor.id) }}">Editar</a>
+                        <form action="{{ url_for('admin.eliminar_doctor', id=doctor.id) }}" method="POST" style="display:inline;">
+                            <button type="submit">Eliminar</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Centro Médico</p>
+    </footer>
+</body>
+</html>
