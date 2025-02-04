@@ -1,0 +1,98 @@
+<!DOCTYPE html> 
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seleccionar turno</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/patient_dashboard.css') }}">
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li>
+          <a href="#"><img src="{{ url_for('static', filename='img/logo-consultorio.png') }}" alt="Logotipo del consultorio" class="nav-logo"></a>
+        </li>
+        <div class="nav-item"></div>
+        <li class="dropdown">
+          <a href="#">Contacto</a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Teléfono: (387)- 4033330</a></li>
+            <li><a href="#">Email: centromedicointegral@salta.com</a></li>
+            <li><a href="#">Dirección: San Martín 111, Ciudad de Salta</a></li>
+          </ul>
+        </li>
+        <!-- Cambié la URL de logout para referirse correctamente al blueprint 'auth' -->
+        <li><a class="logout-button" href="{{ url_for('auth.logout') }}">Cerrar sesión</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+  <div class="container">
+    <!-- Selección del médico -->
+    <section id="doctores">
+      <h2>Selecciona un Doctor</h2>
+      <div class="doctor-cards">
+        <!-- Tarjetas de médicos -->
+        <div class="doctor-card" data-doctor="Dr. Juan Pérez">
+          <h3>Dr. Juan Pérez</h3>
+          <p>Especialidad: Consulta General</p>
+          <div class="calendario-container hidden">
+            <div class="mes-selector">
+              <button class="prev-month">Anterior</button>
+              <span class="mes-titulo"></span>
+              <button class="next-month">Siguiente</button>
+            </div>
+            <div class="calendario-grid"></div>
+            <ul class="turnos-disponibles"></ul>
+          </div>
+        </div>
+        <div class="doctor-card" data-doctor="Dra. María López">
+          <h3>Dra. María López</h3>
+          <p>Especialidad: Pediatría</p>
+          <div class="calendario-container hidden">
+            <div class="mes-selector">
+              <button class="prev-month">Anterior</button>
+              <span class="mes-titulo"></span>
+              <button class="next-month">Siguiente</button>
+            </div>
+            <div class="calendario-grid"></div>
+            <ul class="turnos-disponibles"></ul>
+          </div>
+        </div>
+        <div class="doctor-card" data-doctor="Dr. Carlos Gómez">
+          <h3>Dr. Carlos Gómez</h3>
+          <p>Especialidad: Cardiología</p>
+          <div class="calendario-container hidden">
+            <div class="mes-selector">
+              <button class="prev-month">Anterior</button>
+              <span class="mes-titulo"></span>
+              <button class="next-month">Siguiente</button>
+            </div>
+            <div class="calendario-grid"></div>
+            <ul class="turnos-disponibles"></ul>
+          </div>
+        </div>
+        <div class="doctor-card" data-doctor="Dra. Ana Rodríguez">
+          <h3>Dra. Ana Rodríguez</h3>
+          <p>Especialidad: Odontología</p>
+          <div class="calendario-container hidden">
+            <div class="mes-selector">
+              <button class="prev-month">Anterior</button>
+              <span class="mes-titulo"></span>
+              <button class="next-month">Siguiente</button>
+            </div>
+            <div class="calendario-grid"></div>
+            <ul class="turnos-disponibles"></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <footer> </footer>
+
+  <script src="{{ url_for('static', filename='js/patient_dashboard.js') }}"></script>
+</body>
+</html>
